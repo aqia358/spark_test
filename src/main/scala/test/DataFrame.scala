@@ -18,7 +18,8 @@ object DataFrame {
     // The Avro records get converted to Spark types, filtered, and
     // then written back out as Avro records
     val df2 = sqlContext.read.avro("src/main/resources/episodes.avro")
-//    df2.filter("doctor > 5").write.avro("/tmp/output")
+    //    df2.filter("doctor > 5").write.avro("/tmp/output")
+    println(df2.count)
     df2.filter("doctor > 5").take(10).foreach(println)
     sc.stop()
   }
