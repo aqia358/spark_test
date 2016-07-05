@@ -3,18 +3,18 @@ package com.youdao.tonetease
 import java.text.SimpleDateFormat
 import java.util.Calendar
 
-import com.youdao.quipu.avro.schema.{SdkClick, SdkPv, SdkImpr}
-import org.apache.spark.sql.SQLContext
-import org.joda.time.DateTime
+import com.youdao.quipu.avro.schema.{SdkClick, SdkImpr, SdkPv}
 import org.apache.avro.mapred.{AvroInputFormat, AvroWrapper}
 import org.apache.avro.util.Utf8
 import org.apache.hadoop.io.NullWritable
+import org.apache.spark.sql.SQLContext
 import org.apache.spark.{SparkConf, SparkContext}
+import org.joda.time.DateTime
 
 /**
  * Created by liuhl on 16-4-19.
  */
-object NeteaseDaily {
+object SdkPvImprJoin {
   val sparkConf = new SparkConf().setAppName("RDDRelation").setMaster("local")
   val sc = new SparkContext(sparkConf)
   val sqlContext = new SQLContext(sc)
@@ -29,6 +29,7 @@ object NeteaseDaily {
   def main(args: Array[String]) {
     println(getYesterday("yyyy/MM/dd"))
   }
+
 
   def test(args: Array[String]) {
     val yesterday = getYesterday("yyyy/MM/dd")
